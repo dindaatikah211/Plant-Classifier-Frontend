@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 Plant Classifier — Frontend
 
-## Getting Started
+Antarmuka web untuk sistem klasifikasi tumbuhan berbasis gambar, dibangun dengan Next.js + Tailwind CSS.
 
-First, run the development server:
+> Bagian dari project **Tubes Pengolahan Citra** — sistem klasifikasi tumbuhan berbasis gambar.
+
+---
+
+## Struktur Folder
+
+```
+frontend/
+├── app/
+│   ├── page.tsx          # Halaman upload gambar
+│   ├── result/
+│   │   └── page.tsx      # Halaman hasil prediksi
+│   └── layout.tsx
+├── public/
+├── next.config.ts
+├── tailwind.config.ts
+└── package.json
+```
+
+---
+
+## Instalasi & Menjalankan
+
+### 1. Clone repo
+
+```bash
+git clone https://github.com/username/plant-classifier-frontend.git
+cd plant-classifier-frontend
+```
+
+### 2. Install dependency
+
+```bash
+npm install
+```
+
+### 3. Pastikan Backend sudah berjalan
+
+Frontend ini membutuhkan backend Flask yang berjalan di `http://localhost:5000`.  
+Lihat: [plant-classifier-backend](https://github.com/username/plant-classifier-backend)
+
+### 4. Jalankan development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka browser ke `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fitur
 
-## Learn More
+- Upload gambar via klik atau drag & drop
+- Preview gambar sebelum diidentifikasi
+- Menampilkan hasil prediksi utama beserta confidence score
+- Menampilkan top 3 kemungkinan kelas
+- Indikator visual: tanaman sehat (hijau) vs terdeteksi penyakit (merah)
+- Confidence bar untuk setiap prediksi
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tampilan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Halaman Upload | Halaman Hasil |
+|---|---|
+| Upload gambar daun | Hasil identifikasi + top 3 |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js 15](https://nextjs.org/) (App Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- Fetch API (komunikasi ke Flask backend)
+
+---
+
+## Repo Terkait
+
+- **Backend (Flask):** [plant-classifier-backend](https://github.com/username/plant-classifier-backend)
