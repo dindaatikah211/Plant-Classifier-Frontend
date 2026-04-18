@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
@@ -30,27 +30,29 @@ function ConfidenceBar({ value }: { value: number }) {
   )
 }
 
+function getInitialResult(): Result | null {
+  if (typeof window === 'undefined') return null
+  const raw = sessionStorage.getItem('result')
+  if (!raw) return null
+  try {
+    return JSON.parse(raw) as Result
+  } catch {
+    return null
+  }
+}
+
 export default function Result() {
-  const [result, setResult] = useState<Result | null>(null)
-  const [ready, setReady]   = useState(false)
-  const router = useRouter()
+  const [result] = useState<Result | null>(getInitialResult)
+  const router   = useRouter()
 
-  useEffect(() => {
-    const raw = sessionStorage.getItem('result')
-    if (!raw) {
-      router.push('/')
-      return
-    }
-    const parsed: Result = JSON.parse(raw)
-    setResult(parsed)
-    setReady(true)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  if (!ready || !result) return (
-    <main className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center">
-      <p className="text-gray-400">Memuat hasil...</p>
-    </main>
-  )
+  if (!result) {
+    router.push('/')
+    return (
+      <main className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center">
+        <p className="text-gray-400">Mengalihkan...</p>
+      </main>
+    )
+  }
 
   const isHealthy = result.predicted_class.toLowerCase().includes('healthy')
 
@@ -58,7 +60,6 @@ export default function Result() {
     <main className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-6">
       <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md">
 
-        {/* Header */}
         <h1 className="text-2xl font-semibold text-green-800 mb-6">
           🔬 Hasil Identifikasi
         </h1>
@@ -70,7 +71,7 @@ export default function Result() {
             alt="uploaded"
             fill
             className="object-cover"
-            unoptimized // perlu ini karena src dari blob URL (lokal)
+            unoptimized
           />
         </div>
 
@@ -114,7 +115,6 @@ export default function Result() {
           </div>
         </div>
 
-        {/* Tombol kembali */}
         <button
           onClick={() => router.push('/')}
           className="w-full border border-green-500 text-green-700 font-medium py-3 rounded-xl hover:bg-green-50 transition-all"
