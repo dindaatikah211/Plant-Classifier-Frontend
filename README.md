@@ -2,8 +2,6 @@
 
 Antarmuka web untuk sistem klasifikasi tumbuhan berbasis gambar, dibangun dengan Next.js + Tailwind CSS.
 
-> Bagian dari project **Tubes Pengolahan Citra** — sistem klasifikasi tumbuhan berbasis gambar.
-
 ---
 
 ## Struktur Folder
@@ -41,7 +39,7 @@ npm install
 ### 3. Pastikan Backend sudah berjalan
 
 Frontend ini membutuhkan backend Flask yang berjalan di `http://localhost:5000`.  
-Lihat: [plant-classifier-backend](https://github.com/username/plant-classifier-backend)
+Lihat: [plant-classifier-backend](https://github.com/dindaatikah211/plant-classifier-backend)
 
 ### 4. Jalankan development server
 
