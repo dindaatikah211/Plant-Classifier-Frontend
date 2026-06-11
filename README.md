@@ -83,4 +83,4 @@ Buka browser ke `http://localhost:3000`
 
 ## Repo Terkait
 
-- **Backend (Flask):** [plant-classifier-backend](https://github.com/username/plant-classifier-backend)
+- **Backend (Flask):** [plant-classifier-backend](https://github.com/dindaatikah211/plant-classifier-backend)
